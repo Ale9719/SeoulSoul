@@ -36,7 +36,7 @@ const CombinedFooter = () => {
           
           <div className="col-span-1 content-center">
             <div className="w-24 mb-6">
-                <a href="#"><img src="/img/logo.png" className="w-full" alt="Logo" /></a>
+                <a href="#"><img src="/SeoulSoul/img/logo.png" className="w-full" alt="Logo" /></a>
             </div>
           </div>
 
@@ -64,11 +64,11 @@ const CombinedFooter = () => {
             <h4 className="font-bold uppercase text-xs tracking-widest text-gray-400 mb-6">Seguici</h4>
             <div className="flex gap-4 text-xs font-black">
               <a href="#" target="_blank" rel="noreferrer" className="group">
-                <img src="/img/instagram.svg" alt="Instagram" className="w-6 h-6 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" style={{ filter: 'grayscale(1) brightness(0.5)' }}/>
+                <img src="/SeoulSoul/img/instagram.svg" alt="Instagram" className="w-6 h-6 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" style={{ filter: 'grayscale(1) brightness(0.5)' }}/>
             </a>
 
             <a href="https://tiktok.com/@tuoprofilo" target="_blank" rel="noreferrer" className="group">
-              <img src="/img/tiktok.svg" alt="TikTok" className="w-6 h-6 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" style={{ filter: 'grayscale(1) brightness(0.5)' }} />
+              <img src="/SeoulSoul/img/tiktok.svg" alt="TikTok" className="w-6 h-6 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" style={{ filter: 'grayscale(1) brightness(0.5)' }} />
             </a>
             </div>
           </div>

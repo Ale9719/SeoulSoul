@@ -7,7 +7,7 @@ const ContactMe = () => {
       {/* HEADER */}
       <header className="h-[60vh] relative flex flex-col items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
-          <img src="/img/Contact.png" alt="About Me Background" className="w-full h-full object-cover"/>
+          <img src="/SeoulSoul/img/Contact.png" alt="About Me Background" className="w-full h-full object-cover"/>
           <div className="absolute inset-0 bg-black/40"></div> 
         </div>
 
@@ -102,10 +102,10 @@ const ContactMe = () => {
               <p className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6">Oppure seguimi qui</p>
               <div className="flex gap-6 mt-10 justify-center">
                <a href="#" className="w-12 h-12 hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] bg-white rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-transform">
-                  <img src="/img/instagram.svg" className="w-6 h-6" alt="IG" />
+                  <img src="/SeoulSoul/img/instagram.svg" className="w-6 h-6" alt="IG" />
                </a>
                <a href="#" className="w-12 h-12 hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] bg-white rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-transform">
-                  <img src="/img/tiktok.svg" className="w-6 h-6" alt="TT" />
+                  <img src="/SeoulSoul/img/tiktok.svg" className="w-6 h-6" alt="TT" />
                </a>
             </div>
             </div>

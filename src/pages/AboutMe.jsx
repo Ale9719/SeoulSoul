@@ -10,7 +10,7 @@ const AboutMe = () => {
       {/* HEADER */}
       <header className="h-[60vh] relative flex flex-col items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
-          <img src="/img/Header-about.png" alt="About Me Background" className="w-full h-full object-cover"/>
+          <img src="/SeoulSoul/img/Header-about.png" alt="About Me Background" className="w-full h-full object-cover"/>
           <div className="absolute inset-0 bg-black/40"></div> 
         </div>
 
@@ -43,7 +43,7 @@ const AboutMe = () => {
             <div className="relative group mx-auto lg:mx-0">
               <div className="absolute -inset-2 bg-linear-to-r from-pink-400 to-cyan-400 rounded-4xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
               <div className="relative justify-items-center bg-white p-3 rounded-4xl shadow-2xl">
-                <img src="/img/about.png" alt="About Me" className="rounded-3xl w-full max-w-112.5 grayscale-30 hover:grayscale-0 transition duration-500"/>
+                <img src="/SeoulSoul/img/about.png" alt="About Me" className="rounded-3xl w-full max-w-112.5 grayscale-30 hover:grayscale-0 transition duration-500"/>
               </div>
             </div>
 

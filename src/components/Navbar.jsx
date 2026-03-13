@@ -39,7 +39,7 @@ const Navbar = () => {
         {/* LOGO */}
         <div className={`w-30 transition-opacity duration-300 ${isSearchOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
           <Link to="/">
-            <img src="/img/logo.png" alt="Logo" className={`transition-all duration-300`} />
+            <img src="/SeoulSoul/img/logo.png" alt="Logo" className={`transition-all duration-300`} />
           </Link>
         </div>
 

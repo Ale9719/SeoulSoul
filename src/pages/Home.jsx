@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <main className="relative h-screen flex flex-col items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
-          <img src="/img/header.png" alt="K-Pop Background" className="w-full h-full object-cover"/>
+          <img src="/SeoulSoul/img/header.png" alt="K-Pop Background" className="w-full h-full object-cover"/>
           <div className="absolute inset-0 bg-black/25"></div> 
         </div>
 
