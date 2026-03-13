@@ -1,0 +1,26 @@
+[
+  { 
+    "id": 1, 
+    "name": "Anua Heartleaf 77% Toner", 
+    "price": "22.00", 
+    "category": "skincare", 
+    "image": "/products/product-skincare-test.jpg", 
+    "isNew": true 
+  },
+  { 
+    "id": 2, 
+    "name": "Stray Kids - 5 STAR", 
+    "price": "25.00", 
+    "category": "merchandising", 
+    "image": "/products/merchandising.png", 
+    "isNew": false 
+  },
+    { 
+    "id": 3, 
+    "name": "Album K-pop", 
+    "price": "30.00", 
+    "category": "album", 
+    "image": "/products/album.png", 
+    "isNew": false 
+  }
+]
