@@ -1,14 +1,16 @@
 import FeatureCard from '../components/FeatureCard';
 import ItalyMap from '../components/ItalyMap';
 import { Link } from 'react-router-dom';
+import header from '../assets/img/header.png';
+
 
 const Home = () => {
   return (
     <>
       <main className="relative h-screen flex flex-col items-center justify-center text-center">
         <div className="absolute inset-0 z-0">
-          <img src="/SeoulSoul/img/header.png" alt="K-Pop Background" className="w-full h-full object-cover"/>
-          <div className="absolute inset-0 bg-black/25"></div> 
+          <img src={header} alt="K-Pop Background" className={`w-full h-full object-cover`}/>
+                    <div className="absolute inset-0 bg-black/25"></div> 
         </div>
 
         <div className="relative z-10">

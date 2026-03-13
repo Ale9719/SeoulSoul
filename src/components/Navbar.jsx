@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { Search, ShoppingBag, X } from 'lucide-react'; 
 import { useCart } from '../context/CartContext';
+import logo from '../assets/img/logo.png';
 
 const Navbar = () => {
   const location = useLocation();
@@ -39,7 +40,7 @@ const Navbar = () => {
         {/* LOGO */}
         <div className={`w-30 transition-opacity duration-300 ${isSearchOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
           <Link to="/">
-            <img src="/SeoulSoul/img/logo.png" alt="Logo" className={`transition-all duration-300`} />
+            <img src={logo} alt="Logo" className={`transition-all duration-300`} /> 
           </Link>
         </div>
 
