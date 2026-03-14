@@ -1,7 +1,7 @@
 import React from 'react';
-import contact from '../assets/img/contact.png';
-import tiktok from '../assets/img/tiktok.svg'; 
-import logo from '../assets/img/logo.png'; 
+import contact from 'img/contact.png';
+import tiktok from 'img/tiktok.svg'; 
+import logo from 'img/Contact.png'; 
 
 const ContactMe = () => {
   return (
