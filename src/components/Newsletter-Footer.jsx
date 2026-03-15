@@ -1,6 +1,6 @@
-import instagram from 'img/instagram.svg'; 
-import tiktok from 'img/tiktok.svg'; 
-import logo from 'img/logo.png'; 
+import instagram from '/img/instagram.svg'; 
+import tiktok from '/img/tiktok.svg'; 
+import logo from '/img/logo.png'; 
 
 
 const CombinedFooter = () => {

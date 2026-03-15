@@ -1,7 +1,7 @@
 import React from 'react';
 import FeatureCard from '../components/FeatureCard';
 import Breadcrumbs from '../components/Breadcrumbs';
-import about from 'img/Header-about.png';
+import about from '/img/Header-about.png';
 
 
 const AboutMe = () => {

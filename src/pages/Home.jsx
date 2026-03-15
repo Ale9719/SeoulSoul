@@ -1,7 +1,7 @@
 import FeatureCard from '../components/FeatureCard';
 import ItalyMap from '../components/ItalyMap';
 import { Link } from 'react-router-dom';
-import header from 'img/header.png';
+import header from '/img/header.png';
 
 
 const Home = () => {

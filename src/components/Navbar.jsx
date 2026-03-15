@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { Search, ShoppingBag, X } from 'lucide-react'; 
 import { useCart } from '../context/CartContext';
-import logo from 'img/logo.png';
+import logo from '/img/logo.png';
 
 const Navbar = () => {
   const location = useLocation();
