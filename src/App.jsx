@@ -14,7 +14,7 @@ import { CartProvider } from './context/CartContext';
 function App() {
   return (
     <CartProvider>
-    <Router>
+    <Router basename="/SeoulSoul">
       <ScrollToTop />
       <div className="min-h-screen relative">
         <Navbar />
