@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Search, ShoppingBag, X, Menu } from 'lucide-react'; 
 import { useCart } from '../context/CartContext';
 
-const logo = 'img/logo.png';
+const logo = `${import.meta.env.BASE_URL}img/logo.png`;
 
 const Navbar = () => {
   const location = useLocation();
@@ -11,7 +11,8 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const searchInputRef = useRef(null);
-  const mobileSearchRef = useRef(null);
+  const navRef = useRef(null);
+  const [navHeight, setNavHeight] = useState(72);
   const { totalItems } = useCart();
   const isDarkTheme = isScrolled || isMobileMenuOpen || location.pathname.startsWith('/store') || location.pathname.startsWith('/cart') || location.pathname.startsWith('/forum');
 
@@ -20,6 +21,13 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Misura altezza navbar dinamicamente
+  useEffect(() => {
+    if (navRef.current) {
+      setNavHeight(navRef.current.offsetHeight);
+    }
+  }, [isScrolled]);
 
   useEffect(() => {
     if (isSearchOpen) searchInputRef.current?.focus();
@@ -45,7 +53,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 backdrop-blur-md w-full z-50 transition-all duration-500 ${
+      <nav ref={navRef} className={`fixed top-0 backdrop-blur-md w-full z-50 transition-all duration-500 ${
         isDarkTheme ? "bg-white/80 shadow-md py-4" : "bg-transparent py-6"
       }`}>
         <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
@@ -113,18 +121,6 @@ const Navbar = () => {
               )}
             </Link>
 
-            {/* Icona search — solo mobile */}
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="lg:hidden relative z-10"
-            >
-              {isSearchOpen ? (
-                <X size={26} className="text-pink-500 transition-transform duration-300" />
-              ) : (
-                <Search size={26} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"}`} />
-              )}
-            </button>
-
             {/* Hamburger — solo mobile */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -138,17 +134,36 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* BARRA RICERCA MOBILE — scorre sotto la navbar */}
-        <div className={`lg:hidden w-full transition-all duration-400 overflow-hidden ${
-          isSearchOpen && !isMobileMenuOpen ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
-        }`}>
-          <div className="px-8 py-3 border-t border-slate-100">
+      {/* MOBILE MENU OVERLAY */}
+      <div
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
+          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        style={{ paddingTop: `${navHeight}px` }}
+      >
+        <div className="absolute inset-0 bg-white/95 backdrop-blur-xl" />
+
+        <div className="relative h-full flex flex-col overflow-y-auto">
+
+          {/* Decorazioni sfondo */}
+          <div className="absolute top-20 right-0 w-64 h-64 bg-pink-100 rounded-full blur-[80px] opacity-50 pointer-events-none" />
+          <div className="absolute bottom-20 left-0 w-64 h-64 bg-cyan-100 rounded-full blur-[80px] opacity-50 pointer-events-none" />
+
+          {/* RICERCA — subito sotto la navbar */}
+          <div
+            className="relative z-10 px-8 pt-6 pb-4 border-b border-slate-100"
+            style={{
+              opacity: isMobileMenuOpen ? 1 : 0,
+              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-10px)',
+              transition: 'transform 0.3s ease, opacity 0.3s ease',
+            }}
+          >
             <div className="relative p-0.5 rounded-sm bg-linear-to-r from-pink-400 to-cyan-400">
               <div className="flex items-center bg-white rounded-sm px-4 py-3 gap-3">
                 <Search size={16} className="text-slate-400 shrink-0" />
                 <input
-                  ref={mobileSearchRef}
                   type="text"
                   placeholder="Cerca prodotti, album..."
                   className="w-full outline-none text-sm font-bold text-slate-800 placeholder:text-slate-300 placeholder:italic"
@@ -156,45 +171,36 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-        </div>
-      </nav>
 
-      {/* MOBILE MENU OVERLAY */}
-      <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
-        isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-      }`}>
-        <div className="absolute inset-0 bg-white/95 backdrop-blur-xl" />
-        
-        <div className="relative h-full flex flex-col items-center justify-center gap-2 px-8">
-          
-          <div className="absolute top-0 right-0 w-64 h-64 bg-pink-100 rounded-full blur-[80px] opacity-50 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-100 rounded-full blur-[80px] opacity-50 pointer-events-none" />
+          {/* LINKS */}
+          <div className="relative z-10 flex flex-col items-center justify-center flex-1 gap-2 px-8 py-8">
+            {links.map((link, i) => {
+              const isActive = location.pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="relative group w-full text-center py-4"
+                  style={{ 
+                    transitionDelay: isMobileMenuOpen ? `${i * 60}ms` : '0ms',
+                    transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)',
+                    opacity: isMobileMenuOpen ? 1 : 0,
+                    transition: 'transform 0.4s ease, opacity 0.4s ease'
+                  }}
+                >
+                  <span className={`text-3xl font-black uppercase tracking-tighter bg-linear-to-r from-pink-500 to-cyan-400 bg-clip-text transition-all duration-300 ${
+                    isActive ? "text-transparent" : "text-gray-800 group-hover:text-transparent"
+                  }`}>
+                    {link.name}
+                  </span>
+                  {isActive && (
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-pink-400" />
+                  )}
+                </Link>
+              );
+            })}
+          </div>
 
-          {links.map((link, i) => {
-            const isActive = location.pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="relative group w-full text-center py-4"
-                style={{ 
-                  transitionDelay: isMobileMenuOpen ? `${i * 60}ms` : '0ms',
-                  transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)',
-                  opacity: isMobileMenuOpen ? 1 : 0,
-                  transition: 'transform 0.4s ease, opacity 0.4s ease'
-                }}
-              >
-                <span className={`text-3xl font-black uppercase tracking-tighter bg-linear-to-r from-pink-500 to-cyan-400 bg-clip-text transition-all duration-300 ${
-                  isActive ? "text-transparent" : "text-gray-800 group-hover:text-transparent"
-                }`}>
-                  {link.name}
-                </span>
-                {isActive && (
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-pink-400" />
-                )}
-              </Link>
-            );
-          })}
         </div>
       </div>
     </>
