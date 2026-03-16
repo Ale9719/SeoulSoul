@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import CombinedFooter from './components/Newsletter-Footer';
@@ -14,7 +14,7 @@ import { CartProvider } from './context/CartContext';
 function App() {
   return (
     <CartProvider>
-    <Router basename="/SeoulSoul">
+    <Router>
       <ScrollToTop />
       <div className="min-h-screen relative">
         <Navbar />
