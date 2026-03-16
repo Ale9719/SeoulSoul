@@ -10,7 +10,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const searchInputRef = useRef(null); 
+  const searchInputRef = useRef(null);
+  const mobileSearchRef = useRef(null);
   const { totalItems } = useCart();
   const isDarkTheme = isScrolled || isMobileMenuOpen || location.pathname.startsWith('/store') || location.pathname.startsWith('/cart') || location.pathname.startsWith('/forum');
 
@@ -24,13 +25,11 @@ const Navbar = () => {
     if (isSearchOpen) searchInputRef.current?.focus();
   }, [isSearchOpen]);
 
-  // Chiudi menu mobile al cambio pagina
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setIsSearchOpen(false);
   }, [location.pathname]);
 
-  // Blocca scroll quando menu aperto
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -75,7 +74,7 @@ const Navbar = () => {
           </div>
 
           {/* AREA AZIONI */}
-          <div className="flex items-center gap-4 relative">
+          <div className="flex items-center gap-5 relative">
             
             {/* BARRA DI RICERCA — solo desktop */}
             <div className={`hidden lg:flex absolute right-full mr-4 items-center transition-all duration-500 origin-right ${
@@ -95,10 +94,10 @@ const Navbar = () => {
               className="hidden lg:block group relative z-10"
             >
               {isSearchOpen ? (
-                <X size={22} className="text-pink-500 hover:rotate-90 transition-transform duration-300" />
+                <X size={26} className="text-pink-500 hover:rotate-90 transition-transform duration-300" />
               ) : (
                 <Search 
-                  size={20} 
+                  size={24} 
                   className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-pink-500`} 
                 />
               )}
@@ -106,7 +105,7 @@ const Navbar = () => {
 
             {/* Carrello */}
             <Link to="/cart" className={`group relative transition-all duration-300 ${isSearchOpen ? "opacity-50 pointer-events-none" : "opacity-100"}`}>
-              <ShoppingBag size={20} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-cyan-400`} />
+              <ShoppingBag size={26} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-cyan-400`} />
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-linear-to-r from-pink-500 to-cyan-400 text-white text-[10px] font-black w-4 h-4 flex items-center justify-center rounded-full shadow-[0_0_10px_rgba(34,211,238,0.4)]">
                   {totalItems}
@@ -114,17 +113,48 @@ const Navbar = () => {
               )}
             </Link>
 
+            {/* Icona search — solo mobile */}
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="lg:hidden relative z-10"
+            >
+              {isSearchOpen ? (
+                <X size={26} className="text-pink-500 transition-transform duration-300" />
+              ) : (
+                <Search size={26} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"}`} />
+              )}
+            </button>
+
             {/* Hamburger — solo mobile */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden relative z-10 p-1"
             >
               {isMobileMenuOpen ? (
-                <X size={24} className="text-gray-800 transition-transform duration-300 rotate-90" />
+                <X size={28} className="text-gray-800 transition-transform duration-300 rotate-90" />
               ) : (
-                <Menu size={24} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"}`} />
+                <Menu size={28} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"}`} />
               )}
             </button>
+          </div>
+        </div>
+
+        {/* BARRA RICERCA MOBILE — scorre sotto la navbar */}
+        <div className={`lg:hidden w-full transition-all duration-400 overflow-hidden ${
+          isSearchOpen && !isMobileMenuOpen ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
+        }`}>
+          <div className="px-8 py-3 border-t border-slate-100">
+            <div className="relative p-0.5 rounded-sm bg-linear-to-r from-pink-400 to-cyan-400">
+              <div className="flex items-center bg-white rounded-sm px-4 py-3 gap-3">
+                <Search size={16} className="text-slate-400 shrink-0" />
+                <input
+                  ref={mobileSearchRef}
+                  type="text"
+                  placeholder="Cerca prodotti, album..."
+                  className="w-full outline-none text-sm font-bold text-slate-800 placeholder:text-slate-300 placeholder:italic"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -133,13 +163,10 @@ const Navbar = () => {
       <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
         isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}>
-        {/* Sfondo blur */}
         <div className="absolute inset-0 bg-white/95 backdrop-blur-xl" />
         
-        {/* Contenuto menu */}
         <div className="relative h-full flex flex-col items-center justify-center gap-2 px-8">
           
-          {/* Decorazione sfondo */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-pink-100 rounded-full blur-[80px] opacity-50 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-100 rounded-full blur-[80px] opacity-50 pointer-events-none" />
 
@@ -168,27 +195,6 @@ const Navbar = () => {
               </Link>
             );
           })}
-
-          {/* Search mobile */}
-          <div 
-            className="w-full mt-6 relative p-0.5 rounded-sm bg-linear-to-r from-pink-400 to-cyan-400"
-            style={{ 
-              transitionDelay: isMobileMenuOpen ? `${links.length * 60}ms` : '0ms',
-              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)',
-              opacity: isMobileMenuOpen ? 1 : 0,
-              transition: 'transform 0.4s ease, opacity 0.4s ease'
-            }}
-          >
-            <div className="flex items-center bg-white rounded-sm px-4 py-3 gap-3">
-              <Search size={16} className="text-slate-400 shrink-0" />
-              <input
-                type="text"
-                placeholder="Cerca prodotti, album..."
-                className="w-full outline-none text-sm font-bold text-slate-800 placeholder:text-slate-300 placeholder:italic"
-              />
-            </div>
-          </div>
-
         </div>
       </div>
     </>
