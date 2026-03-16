@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Search, ShoppingBag, X, Menu } from 'lucide-react'; 
 import { useCart } from '../context/CartContext';
 
-const logo = `${import.meta.env.BASE_URL}img/logo.png`;
+const logo = 'img/logo.png';
 
 const Navbar = () => {
   const location = useLocation();
@@ -59,13 +59,13 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
           
           {/* LOGO */}
-          <div className={`w-30 transition-opacity duration-300 ${isSearchOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+          <div className={`w-40 lg:w-30 transition-opacity duration-300 ${isSearchOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
             <Link to="/">
               <img src={logo} alt="Logo" className="transition-all duration-300" /> 
             </Link>
           </div>
 
-          {/* LINKS CENTRALI — solo desktop */}
+          {/* LINKS CENTRALI */}
           <div className={`hidden lg:flex gap-8 transition-opacity duration-300 ${isSearchOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
             {links.map((link) => {
               const isActive = location.pathname === link.href;
@@ -81,10 +81,9 @@ const Navbar = () => {
             })}
           </div>
 
-          {/* AREA AZIONI */}
           <div className="flex items-center gap-5 relative">
             
-            {/* BARRA DI RICERCA — solo desktop */}
+            {/* BARRA DI RICERCA */}
             <div className={`hidden lg:flex absolute right-full mr-4 items-center transition-all duration-500 origin-right ${
               isSearchOpen ? "w-62.5 md:w-100 opacity-100 scale-100" : "w-0 opacity-0 scale-95 pointer-events-none"
             }`}>
@@ -96,24 +95,23 @@ const Navbar = () => {
               />
             </div>
 
-            {/* Bottone Lente — solo desktop */}
+            {/* Bottone Lente */}
             <button 
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="hidden lg:block group relative z-10"
             >
               {isSearchOpen ? (
-                <X size={26} className="text-pink-500 hover:rotate-90 transition-transform duration-300" />
+                <X size={26} className="w-40 lg:w-28 text-pink-500 hover:rotate-90 transition-transform duration-300" />
               ) : (
                 <Search 
-                  size={24} 
-                  className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-pink-500`} 
+                  className={`w-40 lg:w-24 transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-pink-500`} 
                 />
               )}
             </button>
 
             {/* Carrello */}
             <Link to="/cart" className={`group relative transition-all duration-300 ${isSearchOpen ? "opacity-50 pointer-events-none" : "opacity-100"}`}>
-              <ShoppingBag size={26} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-cyan-400`} />
+              <ShoppingBag className={`w-40 lg:w-24 transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-cyan-400`} />
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-linear-to-r from-pink-500 to-cyan-400 text-white text-[10px] font-black w-4 h-4 flex items-center justify-center rounded-full shadow-[0_0_10px_rgba(34,211,238,0.4)]">
                   {totalItems}
@@ -121,22 +119,21 @@ const Navbar = () => {
               )}
             </Link>
 
-            {/* Hamburger — solo mobile */}
+            {/* Hamburger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden relative z-10 p-1"
             >
               {isMobileMenuOpen ? (
-                <X size={28} className="text-gray-800 transition-transform duration-300 rotate-90" />
+                <X size={35} className="text-gray-800 transition-transform duration-300 rotate-90" />
               ) : (
-                <Menu size={28} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"}`} />
+                <Menu size={35} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"}`} />
               )}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* MOBILE MENU OVERLAY */}
       <div
         className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -147,11 +144,10 @@ const Navbar = () => {
 
         <div className="relative h-full flex flex-col overflow-y-auto">
 
-          {/* Decorazioni sfondo */}
           <div className="absolute top-20 right-0 w-64 h-64 bg-pink-100 rounded-full blur-[80px] opacity-50 pointer-events-none" />
           <div className="absolute bottom-20 left-0 w-64 h-64 bg-cyan-100 rounded-full blur-[80px] opacity-50 pointer-events-none" />
 
-          {/* RICERCA — subito sotto la navbar */}
+          {/* RICERCA */}
           <div
             className="relative z-10 px-8 pt-6 pb-4 border-b border-slate-100"
             style={{
