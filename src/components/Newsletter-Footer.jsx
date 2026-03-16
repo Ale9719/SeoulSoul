@@ -1,6 +1,6 @@
-const instagram = '/img/instagram.svg'; 
-const tiktok = '/img/tiktok.svg'; 
-const logo = '/img/logo.png'; 
+const instagram = 'img/instagram.svg'; 
+const tiktok = 'img/tiktok.svg'; 
+const logo = 'img/logo.png'; 
 
 
 const CombinedFooter = () => {
