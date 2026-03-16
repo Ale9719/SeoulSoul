@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import productsData from '../data/products.json';
+import productsData from '../Data/products.json';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 const CategoryPage = () => {

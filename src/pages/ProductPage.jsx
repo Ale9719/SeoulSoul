@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
 import { useParams } from 'react-router-dom';
-import productsData from '../data/products.json';
+import productsData from '../Data/products.json';
 import { useCart } from '../context/CartContext';
 import Breadcrumbs from '../components/Breadcrumbs';
 
