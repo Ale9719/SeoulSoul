@@ -59,7 +59,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
           
           {/* LOGO */}
-          <div className={`w-40 lg:w-30 transition-opacity duration-300 ${isSearchOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+          <div className={`w-36 lg:w-30 transition-opacity duration-300 ${isSearchOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
             <Link to="/">
               <img src={logo} alt="Logo" className="transition-all duration-300" /> 
             </Link>
@@ -101,17 +101,18 @@ const Navbar = () => {
               className="hidden lg:block group relative z-10"
             >
               {isSearchOpen ? (
-                <X size={26} className="w-40 lg:w-28 text-pink-500 hover:rotate-90 transition-transform duration-300" />
+                <X size={34} className="text-pink-500 hover:rotate-90 transition-transform duration-300" />
               ) : (
                 <Search 
-                  className={`w-40 lg:w-24 transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-pink-500`} 
+                  size={34} 
+                  className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-pink-500`} 
                 />
               )}
             </button>
 
             {/* Carrello */}
             <Link to="/cart" className={`group relative transition-all duration-300 ${isSearchOpen ? "opacity-50 pointer-events-none" : "opacity-100"}`}>
-              <ShoppingBag className={`w-40 lg:w-24 transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-cyan-400`} />
+              <ShoppingBag size={32} className={`transition-colors duration-300 ${isDarkTheme ? "text-gray-800" : "text-white"} group-hover:text-cyan-400`} />
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-linear-to-r from-pink-500 to-cyan-400 text-white text-[10px] font-black w-4 h-4 flex items-center justify-center rounded-full shadow-[0_0_10px_rgba(34,211,238,0.4)]">
                   {totalItems}
