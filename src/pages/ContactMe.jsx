@@ -1,8 +1,8 @@
 import React from 'react';
-const contact = '/img/contact.png';
-const tiktok = '/img/tiktok.svg';
-const logo = '/img/Contact.png';
-const instagram = '/img/instagram.svg';
+const contact = 'img/contact.png';
+const tiktok = 'img/tiktok.svg';
+const logo = 'img/Contact.png';
+const instagram = 'img/instagram.svg';
 
 const ContactMe = () => {
   return (
