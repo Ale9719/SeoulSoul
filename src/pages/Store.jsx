@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import { Link, useLocation } from 'react-router-dom';
-import productsData from '../data/products.json';
+import productsData from '../Data/products.json';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 const Store = () => {
