@@ -6,46 +6,42 @@ const header = 'img/header.png';
 const Home = () => {
   return (
     <>
-      {/* Hero Section: Aumentato il padding e migliorata la leggibilità */}
-      <main className="relative min-h-[85vh] md:h-screen flex flex-col items-center justify-center text-center px-6 py-12">
+      {/* Hero Section: Aumentato il contrasto e i font */}
+      <main className="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-6 py-12">
         <div className="absolute inset-0 z-0">
           <img src={header} alt="K-Pop Background" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/50"></div> {/* Scurito un po' di più per far leggere i bottoni */}
+          <div className="absolute inset-0 bg-black/60"></div> 
         </div>
 
-        <div className="relative z-10 w-full max-w-4xl">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-tight uppercase">
-            Esplora il mondo <br /> 
-            del <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400">K-Pop</span>
+        <div className="relative z-10 w-full">
+          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter leading-[1.1] uppercase">
+            ESPLORA IL <br /> MONDO <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400">K-POP</span>
           </h1>
           
-          <div className="flex flex-col sm:flex-row gap-5 mt-10 justify-center items-center w-full max-w-xs mx-auto sm:max-w-none">
-            <Link to="/store?cat=album" className="w-full sm:w-auto">
-              <button className="w-full sm:px-10 py-4 border-2 bg-pink-500/10 border-pink-500 text-white rounded-xl font-bold uppercase tracking-wider hover:bg-pink-500 transition-all shadow-lg active:scale-95">
-                Scopri gli Album
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center items-center">
+            <Link to="/store?cat=album" className="w-full sm:w-auto px-4">
+              <button className="w-full sm:px-10 py-4 border-2 bg-pink-500 border-pink-500 text-white rounded-xl font-bold uppercase shadow-[0_0_20px_rgba(236,72,153,0.4)]">
+                SCOPRI GLI ALBUM
               </button>
             </Link>
-
-            <Link to="/store?cat=merchandising" className="w-full sm:w-auto">
-              <button className="w-full sm:px-10 py-4 border-2 bg-cyan-400/10 border-cyan-400 text-white rounded-xl font-bold uppercase tracking-wider hover:bg-cyan-400 transition-all shadow-lg active:scale-95">
-                Vedi il Merch
+            <Link to="/store?cat=merchandising" className="w-full sm:w-auto px-4">
+              <button className="w-full sm:px-10 py-4 border-2 bg-cyan-400 border-cyan-400 text-white rounded-xl font-bold uppercase shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+                VEDI IL MERCH
               </button>
             </Link>
           </div>
         </div>
       </main>
 
-      {/* Feature Cards: Forziamo il W-FULL su mobile. 
-          IMPORTANTE: Se le scritte dentro FeatureCard sono ancora piccole, 
-          dovrai modificare i font-size dentro quel componente (es. text-2xl). */}
-      <section className="flex flex-col md:flex-row flex-wrap w-full">
+      {/* Feature Cards: Forziamo 1 colonna su mobile e 2 solo su tablet/desktop grande */}
+      <section className="flex flex-col lg:flex-row w-full">
         {[
-          { title: "Album Collection", text: "I migliori album del momento", btn: "VISITA LA COLLEZIONE", bg: "bg-[#f8bccb]", neon: "border-pink-500 text-pink-500 shadow-[0_0_10px_rgba(236,72,153,0.3)]", hBg: "hover:bg-pink-500 hover:text-white" },
-          { title: "K-Skincare", text: "La migliore skincare coreana", btn: "ESPLORA SKINCARE", bg: "bg-[#e9d6bc]", neon: "border-white text-white shadow-[0_0_10px_rgba(255,255,255,0.3)]", hBg: "hover:bg-white hover:text-[#e9d6bc]" },
-          { title: "Merchandising", text: "Tutto quello che ti serve per i concerti", btn: "SCOPRI IL MERCH", bg: "bg-[#d1edf1]", neon: "border-cyan-400 text-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.3)]", hBg: "hover:bg-cyan-400 hover:text-white" },
-          { title: "K-Pop Forum", text: "Unisciti alla nostra community", btn: "ACCEDI AL FORUM", bg: "bg-[#fcfaf7]", neon: "bg-gradient-to-r from-pink-400 to-cyan-400 text-white", hBg: "hover:opacity-90", isGrad: true, tCol: "text-slate-800" }
+          { title: "Album Collection", text: "I migliori album del momento", btn: "VISITA LA COLLEZIONE", bg: "bg-[#f8bccb]", neon: "border-pink-500 text-pink-500", hBg: "hover:bg-pink-500 hover:text-white" },
+          { title: "K-Skincare", text: "La migliore skincare coreana", btn: "ESPLORA SKINCARE", bg: "bg-[#e9d6bc]", neon: "border-white text-white", hBg: "hover:bg-white hover:text-[#e9d6bc]" },
+          { title: "Merchandising", text: "Tutto per i tuoi concerti", btn: "SCOPRI IL MERCH", bg: "bg-[#d1edf1]", neon: "border-cyan-400 text-cyan-400", hBg: "hover:bg-cyan-400 hover:text-white" },
+          { title: "K-Pop Forum", text: "Unisciti alla community", btn: "ACCEDI AL FORUM", bg: "bg-[#fcfaf7]", neon: "bg-gradient-to-r from-pink-400 to-cyan-400 text-white", isGrad: true, tCol: "text-slate-800" }
         ].map((card, i) => (
-          <div key={i} className="w-full md:w-1/2 lg:w-1/4 min-h-[300px] flex">
+          <div key={i} className="w-full lg:w-1/4">
             <FeatureCard 
               title={card.title} 
               text={card.text}
@@ -55,37 +51,26 @@ const Home = () => {
               hoverBg={card.hBg}
               textColor={card.tCol}
               isGradient={card.isGrad}
-              className="w-full h-full py-12 px-8" // Aumentiamo il padding interno
+              // Queste classi sotto passano al componente se supporta className, 
+              // altrimenti dovrai metterle dentro FeatureCard.jsx
+              className="py-16 px-10 min-h-[350px] flex flex-col justify-center items-center text-center border-b border-white/10 lg:border-none"
             />
           </div>
         ))}
       </section>
 
-      {/* Community Section: Sistemato il layout per non far sparire la mappa */}
-      <section className="bg-slate-950 py-16 md:py-24 px-6 flex flex-col items-center">
-        <div className="text-center mb-12">
-          <h2 className="text-white text-3xl md:text-4xl font-black mb-3 uppercase italic tracking-tighter">
-            Live Community <span className="text-pink-500 animate-pulse">●</span>
-          </h2>
-          <p className="text-gray-500 text-xs md:text-sm uppercase tracking-[0.2em]">
-            Acquisti in tempo reale da tutta Italia
-          </p>
-        </div>
-        
-        <div className="w-full max-w-5xl bg-white/[0.03] border border-white/10 rounded-[2rem] p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12">
-          <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
-            <h3 className="text-white text-4xl md:text-6xl font-black mb-6 leading-[0.9] uppercase tracking-tighter">
-              L'Italia ama <br /> il <span className="text-pink-500">K-Pop</span>
-            </h3>
-            <p className="text-gray-400 text-lg md:text-xl max-w-md mx-auto lg:mx-0">
-              Unisciti a migliaia di fan che stanno già collezionando i loro album preferiti.
-            </p>
+      {/* Community Section: Testo grande e mappa centrata */}
+      <section className="bg-slate-900 py-20 px-6">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-12">
+          <div className="text-center">
+            <h2 className="text-white text-4xl md:text-6xl font-black mb-4 leading-none uppercase italic">
+              L'ITALIA AMA <br /> IL <span className="text-pink-500">K-POP</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Unisciti a migliaia di fan in tutta Italia.</p>
           </div>
           
-          <div className="flex-1 w-full flex justify-center order-1 lg:order-2">
-            <div className="relative w-full max-w-[300px] md:max-w-none transform scale-110 md:scale-125">
-              <ItalyMap />
-            </div>
+          <div className="w-full flex justify-center transform scale-125 md:scale-100 py-10">
+            <ItalyMap />
           </div>
         </div>
       </section>
