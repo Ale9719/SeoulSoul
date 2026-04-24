@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       {/* HERO SECTION: Altezza ridotta su mobile, testi scalati */}
-      <main className="relative min-h-[70vh] md:h-screen flex flex-col items-center justify-center text-center px-4 py-20">
+      <main className="relative min-h-[70vh] lg:h-screen flex flex-col items-center justify-center text-center px-4 py-20">
         <div className="absolute inset-0 z-0">
           <img src={header} alt="K-Pop Background" className="w-full h-full object-cover"/>
           <div className="absolute inset-0 bg-black/40 md:bg-black/25"></div> 
