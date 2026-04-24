@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       {/* HERO */}
-      <main className="relative min-h-screen flex flex-col items-center justify-center text-center px-4">
+      <main className="relative min-h-[60vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center text-center px-4">
         <div className="absolute inset-0 z-0">
           <img src={header} alt="K-Pop Background" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/40"></div>
