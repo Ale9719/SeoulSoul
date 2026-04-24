@@ -43,7 +43,7 @@ const Home = () => {
           text="I migliori album del momento"
           buttonText="VISITA LA COLLEZIONE ALBUM"
           bgColor="bg-[#f8bccb]"
-          neonColor="border-pink-500 text-lg sm:text-2xl lg:text-3xl text-pink-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]"
+          neonColor="border-pink-500 sm:text-2xl lg:text-3xl text-pink-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]"
           hoverBg="hover:bg-pink-500 hover:text-[#f8bccb]"
         />
         <FeatureCard
@@ -51,7 +51,7 @@ const Home = () => {
           text="Non c'è cosa più divina della skincare coreana"
           buttonText="ESPLORA SKINCARE"
           bgColor="bg-[#e9d6bc] bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')]"
-          neonColor="border-white text-lg sm:text-2xl lg:text-3xl text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+          neonColor="border-white sm:text-2xl lg:text-3xl text-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
           hoverBg="hover:bg-white hover:text-[#e9d6bc]"
         />
         <FeatureCard
@@ -59,7 +59,7 @@ const Home = () => {
           text="non puoi andare a un concerto senza il necessario"
           buttonText="SCOPRI IL MERCH"
           bgColor="bg-[#d1edf1]"
-          neonColor="border-cyan-400 text-lg sm:text-2xl lg:text-3xl text-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]"
+          neonColor="border-cyan-40 sm:text-2xl lg:text-3xl text-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]"
           hoverBg="hover:bg-cyan-400 hover:text-[#d1edf1]"
         />
         <FeatureCard
@@ -67,7 +67,7 @@ const Home = () => {
           text="unisci a noi"
           buttonText="ACCEDI AL FORUM"
           bgColor="bg-[#fcfaf7]"
-          neonColor="bg-gradient-to-r from-pink-400 to-cyan-400 text-lg sm:text-2xl lg:text-3xl"
+          neonColor="bg-gradient-to-r from-pink-400 to-cyan-400 sm:text-2xl lg:text-3xl"
           hoverBg="hover:from-blue-600 hover:to-cyan-400"
           textColor="text-slate-800"
           isGradient={true}
